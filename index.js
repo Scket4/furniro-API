@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import items from './items.json' assert { type: "json" };
+import {generateRandomProduct} from './generateProducts.js'
 import item from './item.json' assert { type: "json" };
 
 
@@ -15,7 +15,12 @@ app.get('/', (req, res) => {
 })
 
 app.get('/items', (req, res) => {
-  res.send(JSON.stringify(items))
+  const products = [];
+
+  for (let i = 1; i <= 40; i++) {
+    products.push(generateRandomProduct(i, i % 2 === 0));
+  }
+  res.send(products)
 })
 
 app.get('/item/1', (req, res) => {
