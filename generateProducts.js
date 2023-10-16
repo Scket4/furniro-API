@@ -57,6 +57,7 @@ export const generateRandomProduct = (id, showStatus) => {
   const name = names[getRandomInt(0, names.length - 1)] + ` ${id}`;
   const kind = kinds[getRandomInt(0, kinds.length - 1)] + ` ${getRandomInt(1, 10)}`;
   const image = images[getRandomInt(0, images.length - 1)];
+  const itemId = getRandomInt(1, 2);
   const price = getRandomInt(500, 2000);
   const oldPrice = showStatus ?  price + getRandomInt(50, 300) : undefined;
   const status = showStatus ? {
@@ -66,6 +67,7 @@ export const generateRandomProduct = (id, showStatus) => {
 
   return {
     id,
+    itemId,
     name,
     kind,
     image,
