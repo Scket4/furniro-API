@@ -2,6 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import {generateRandomProduct} from './generateProducts.js'
 import item from './item.json' assert { type: "json" };
+import item2 from './item2.json' assert { type: "json" };
+
 
 
 const app = express()
@@ -26,6 +28,10 @@ app.get('/items', (req, res) => {
 app.get('/item/1', (req, res) => {
   res.send(JSON.stringify(item))
 })
+app.get('/item/2', (req, res) => {
+  res.send(JSON.stringify(item2))
+})
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
