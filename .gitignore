@@ -35,3 +35,7 @@ coverage
 
 # Auto-generated files
 src/content/getting-started/changelog.stories.mdx
+
+# local db
+
+src/db/*

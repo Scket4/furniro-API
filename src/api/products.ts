@@ -1,11 +1,14 @@
 import {Express} from "express";
-import {IProduct} from "../interfaces";
+import {TProduct, TProductExpanded} from "../interfaces";
+import DbService from "../services/db.service";
 
-export default class ProductRoutes {
+export default class ProductController {
   app: Express;
+  database: DbService
 
   constructor(app: Express) {
     this.app = app
+    this.database = new DbService()
 
     this.generateRoutes()
   }
@@ -25,17 +28,11 @@ export default class ProductRoutes {
     })
   }
 
-  getProductsList(): IProduct[] {
-    const products = [];
-
-    return products
+  getProductsList(): TProduct[] {
+    return this.database.getProductsList()
   }
 
-  getProduct(id: number): IProduct {
-    if (id === 1) {
-      return this.item1
-    } else {
-      return this.item2
-    }
+  getProduct(id: number): TProductExpanded {
+    return this.database.findProductById(id)
   }
 }
